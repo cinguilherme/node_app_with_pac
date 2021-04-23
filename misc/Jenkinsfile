@@ -20,7 +20,7 @@ node {
     }
 
     stage('docker build/push') {
-        docker.withRegistry('https://dockerhub.com', 'dockerhub') {
+        docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
             def app = docker.build("cinguilherme/node-docker:${commit_id}", '.').push()
         }
     }
