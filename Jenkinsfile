@@ -37,15 +37,10 @@ node {
         }
     }
 
-//     stage('sonarqube') {
-//         environment {
-//             SONAR = credentials('sonar')
-//         }
-//
-//         def sonarQubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-//         sh "${sonarQubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=${env.SONAR} -Dsonar.projectName=node_app_with_pac -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=NAPP -Dsonar.sources=src/ -Dsonar.tests=src/ -Dsonar.language=typescript"
-//
-//     }
+    stage('sonarqube') {
+        def sonarQubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        sh "${sonarQubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=sonar -Dsonar.projectName=node_app_with_pac -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=NAPP -Dsonar.sources=src/ -Dsonar.tests=src/ -Dsonar.language=typescript"
+    }
 
 //     stage('docker build/push') {
 //         docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
