@@ -41,12 +41,9 @@ node {
         environment {
             SONAR = credentials('sonar')
         }
-        step {
-            def sonarQubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
 
-            sh "${sonarQubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=${SONAR} -Dsonar.projectName=node_app_with_pac -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=NAPP -Dsonar.sources=src/ -Dsonar.tests=src/ -Dsonar.language=typescript"
-        }
-
+        def sonarQubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        sh "${sonarQubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=${SONAR} -Dsonar.projectName=node_app_with_pac -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=NAPP -Dsonar.sources=src/ -Dsonar.tests=src/ -Dsonar.language=typescript"
 
     }
 
