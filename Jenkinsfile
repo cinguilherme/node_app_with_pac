@@ -41,10 +41,10 @@ node {
         sh "echo owasp wannabe stage"
     }
 
-    stage('sonarqube') {
-        def sonarQubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-        sh "${sonarQubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.projectName=node_app_with_pac -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=NAPP -Dsonar.sources=src/ -Dsonar.language=typescript"
-    }
+//     stage('sonarqube') {
+//         def sonarQubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+//         sh "${sonarQubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.projectName=node_app_with_pac -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=NAPP -Dsonar.sources=src/ -Dsonar.language=typescript"
+//     }
 
 //     stage('docker build/push') {
 //         docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
