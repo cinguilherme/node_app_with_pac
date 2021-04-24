@@ -34,8 +34,8 @@ node {
         myTestContainer.inside("--link ${mysql.id}") {
             sh 'npm i --only=dev'
             sh 'npm test'
+            mysql.stop()
         }
-        mysql.stop()
     }
 
     stage('sonarqube') {
