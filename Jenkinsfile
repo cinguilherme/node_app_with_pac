@@ -35,6 +35,7 @@ node {
             sh 'npm i --only=dev'
             sh 'npm test'
         }
+        mysql.stop()
     }
 
     stage('docker build/push') {
